@@ -3,17 +3,18 @@ package com.qjt.qjtttt.controller;
 import com.qjt.qjtttt.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
     private static final Logger _logger = LoggerFactory.getLogger(UserController.class);
-    @Autowired
+    @Resource
     private UserService userService;
 
     @RequestMapping("/in")

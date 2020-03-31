@@ -6,9 +6,9 @@ import com.qjt.qjtttt.service.UserService;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
@@ -16,11 +16,10 @@ import java.util.List;
 public class UserRestController {
 
     private static final Logger _logger = LoggerFactory.getLogger(UserRestController.class);
-    @Autowired
+    @Resource
     private UserService userService;
 
     @GetMapping("/")
-    @ResponseBody
     public BaseResponse<List<User>> getPageUserList(@PathVariable Integer offset , @PathVariable Integer limit){
         RowBounds rowBounds=new RowBounds(offset,limit);
         List <User> list=userService.getUserList(rowBounds);
