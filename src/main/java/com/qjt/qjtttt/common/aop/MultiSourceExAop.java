@@ -12,7 +12,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -25,14 +25,14 @@ import java.lang.reflect.Method;
  */
 @Aspect
 @Component
+@Order(1)
 @ConditionalOnProperty(prefix = "xncoding", name = "muti-datasource-open", havingValue = "true")
-public class MultiSourceExAop implements Ordered {
+public class MultiSourceExAop {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Pointcut(value = "@annotation(com.qjt.qjtttt.common.annotion.DataSource)")
     private void cut() {
-
     }
 
     @Around("cut()")
@@ -50,7 +50,7 @@ public class MultiSourceExAop implements Ordered {
 
         DataSource datasource = currentMethod.getAnnotation(DataSource.class);
         if (datasource != null) {
-            System.out.println("1111111111111111111"+datasource.name());
+            System.out.println("1111111111111111111" + datasource.name());
             DataSourceContextHolder.setDataSourceType(datasource.name());
             log.debug("设置数据源为：" + datasource.name());
         } else {
@@ -64,15 +64,6 @@ public class MultiSourceExAop implements Ordered {
             log.debug("清空数据源信息！");
             DataSourceContextHolder.clearDataSourceType();
         }
-    }
-
-
-    /**
-     * aop的顺序要早于spring的事务
-     */
-    @Override
-    public int getOrder() {
-        return 1;
     }
 
 }
