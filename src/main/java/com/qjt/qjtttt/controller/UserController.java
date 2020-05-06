@@ -13,13 +13,14 @@ import javax.annotation.Resource;
 @RequestMapping("/users")
 public class UserController {
 
-    private static final Logger _logger = LoggerFactory.getLogger(UserController.class);
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
     @Resource
     private UserService userService;
 
     @RequestMapping("/in")
     public String index(Model model){
 
+        logger.info("index");
         model.addAttribute("user1",userService.findById(1).toString());
 
         model.addAttribute("user2",userService.findById1(1).toString());
