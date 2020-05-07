@@ -56,9 +56,6 @@ biz:
     password: 123456
 
 logging:
-  level:
-    ROOT: INFO
-    com:
-      xncoding: DEBUG
-  file: D:/logs/app.log
+  config: classpath:log/logback.xml
+
 
