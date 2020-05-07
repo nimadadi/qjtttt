@@ -34,8 +34,7 @@ mybatis-plus:
     multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
 
 logging:
-  level:
-    org.springframework.web.servlet: ERROR
+  config: classpath:log/logback.xml
 
 ---
 #####################################################################
@@ -55,7 +54,5 @@ biz:
     username: root
     password: 123456
 
-logging:
-  config: classpath:log/logback.xml
 
 
