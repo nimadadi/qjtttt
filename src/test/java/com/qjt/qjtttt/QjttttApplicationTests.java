@@ -17,8 +17,8 @@ public class QjttttApplicationTests {
 
 
     @Test
-    public void test(){
-        System.out.println("-------------1111111111111-------------");
+    public void MutiDataSourceTest(){
+        System.out.println("--------11111111--------");
 
 ////        多数据源
 //        User user1 =userService.findById(1);
@@ -36,6 +36,12 @@ public class QjttttApplicationTests {
 //        }
 
 
-        System.out.println("-------------2222222222222-------------");
+        System.out.println("--------22222222--------");
     }
+
+    @Test
+    public void MyExceptionTest(){
+        throw new NullPointerException("sdfew");
+    }
+
 }

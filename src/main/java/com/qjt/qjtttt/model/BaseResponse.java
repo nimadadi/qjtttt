@@ -1,5 +1,7 @@
 package com.qjt.qjtttt.model;
 
+import com.qjt.qjtttt.exception.CommonEnum;
+
 /**
  * 基础返回类
  *
@@ -9,14 +11,14 @@ package com.qjt.qjtttt.model;
  */
 public class BaseResponse<T> {
     /**
-     * 是否成功
+     * 响应代码
      */
-    private boolean success;
+    private String code;
 
     /**
      * 说明
      */
-    private String msg;
+    private String message;
 
     /**
      * 返回数据
@@ -27,26 +29,30 @@ public class BaseResponse<T> {
 
     }
 
-    public BaseResponse(boolean success, String msg, T data) {
-        this.success = success;
-        this.msg = msg;
-        this.data = data;
+    public BaseResponse(String code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public BaseResponse(String code, String message, T data) {
+        this.code = code;
+        this.message = message;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public String getCode() {
+        return code;
     }
 
-    public String getMsg() {
-        return msg;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {
@@ -55,6 +61,41 @@ public class BaseResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+
+    /**
+     * 成功
+     *
+     * @return
+     */
+    public static BaseResponse success() {
+        return success(null);
+    }
+
+    /**
+     * 成功
+     *
+     * @param data
+     * @return
+     */
+    public static BaseResponse success(Object data) {
+        BaseResponse rb = new BaseResponse();
+        rb.setCode(CommonEnum.SUCCESS.getResultCode());
+        rb.setMessage(CommonEnum.SUCCESS.getResultMsg());
+        rb.setData(data);
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static BaseResponse error(String code, String message) {
+        BaseResponse rb = new BaseResponse();
+        rb.setCode(code);
+        rb.setMessage(message);
+        rb.setData(null);
+        return rb;
     }
 
 }

@@ -30,37 +30,33 @@ public class UserRestController {
 
     @ApiOperation(value = "apiop value", notes = "apiop notes", produces = "application/json")
     @GetMapping("/")
-    public BaseResponse<List<User>> getPageUserList(@PathVariable Integer offset, @PathVariable Integer limit) {
+    public BaseResponse getPageUserList(@PathVariable Integer offset, @PathVariable Integer limit) {
         RowBounds rowBounds = new RowBounds(offset, limit);
         List<User> list = userService.getUserList(rowBounds);
-        return new BaseResponse<>(true, "111", list);
+        return BaseResponse.success(list);
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<User> getUser(@PathVariable Integer id) {
+    public BaseResponse getUser(@PathVariable Integer id) {
         // 处理"/users/{id}"的GET请求，用来获取url中id值的User信息
         // url中的id可通过@PathVariable绑定到函数的参数中
-        return new BaseResponse<User>(true, "查询成功", userService.findById(id));
+        return BaseResponse.success(userService.findById(id));
     }
 
     //    创建
     @PostMapping("/")
-    public BaseResponse<String> postUser(@ModelAttribute User user) {
-        userService.insertUser(user);
-        return new BaseResponse<>(true, "新增成功", "");
+    public BaseResponse postUser(@ModelAttribute User user) {
+        return BaseResponse.success(userService.insertUser(user));
     }
 
-
     @PutMapping("/")
-    public BaseResponse<Integer> putUser(@ModelAttribute User user) {
-
-        return new BaseResponse<Integer>(true, "11", userService.updateUser(user));
+    public BaseResponse putUser(@ModelAttribute User user) {
+        return BaseResponse.success(userService.updateUser(user));
     }
 
     @DeleteMapping("/{id}")
-    public BaseResponse<Integer> deleteUser(@PathVariable Integer id) {
-
-        return new BaseResponse<Integer>(true, "11", userService.deleteUser(id));
+    public BaseResponse deleteUser(@PathVariable Integer id) {
+        return BaseResponse.success(userService.deleteUser(id));
     }
 
 
