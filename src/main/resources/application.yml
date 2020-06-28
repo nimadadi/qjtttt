@@ -8,6 +8,16 @@ xncoding:
 
 server:
   port: 8866
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
 ###################  spring配置  ###################
 spring:
   profiles:

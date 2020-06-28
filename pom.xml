@@ -36,6 +36,10 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector.version}</version>
@@ -47,11 +51,11 @@
             <version>${druid.version}</version>
         </dependency>
         <!-- MyBatis plus增强和springboot的集成-->
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
-        <!--<version>${dynamic.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${dynamic.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatisplus-spring-boot-starter</artifactId>
@@ -116,7 +120,6 @@
             <version>${spring-fox.version}</version>
         </dependency>
 
-<<<<<<< HEAD
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -145,8 +148,6 @@
             <artifactId>mybatis-plus</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
-=======
->>>>>>> parent of ec38763... 打包
     </dependencies>
 
     <build>
