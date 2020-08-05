@@ -1,6 +1,6 @@
 package com.qjt.qjtttt.controller;
 
-import com.qjt.qjtttt.service.UserService;
+import com.qjt.qjtttt.service.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,15 +15,15 @@ public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     @Resource
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @RequestMapping("/in")
     public String index(Model model){
 
         logger.info("index");
-        model.addAttribute("user1",userService.findById(1).toString());
+        model.addAttribute("user1", userServiceImpl.findById(1).toString());
 
-        model.addAttribute("user2",userService.findById1(1).toString());
+        model.addAttribute("user2", userServiceImpl.findById1(1).toString());
 
         return "index";
     }

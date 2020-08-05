@@ -1,6 +1,6 @@
 package com.qjt.qjtttt;
 
-import com.qjt.qjtttt.service.UserService;
+import com.qjt.qjtttt.service.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 public class QjttttApplicationTests {
 
     @Resource
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
 
     @Test
