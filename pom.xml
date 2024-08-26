@@ -26,7 +26,7 @@
         <mybatisplus-spring-boot-starter.version>1.0.5</mybatisplus-spring-boot-starter.version>
         <dynamic.version>2.4.2</dynamic.version>
         <hamcrest.version>1.3</hamcrest.version>
-        <spring-fox.version>2.8.0</spring-fox.version>
+        <spring-fox.version>2.10.0</spring-fox.version>
 
     </properties>
 
